@@ -1,13 +1,10 @@
 using System;
-using System.Globalization;
-using System.IO;
-using App.Models.Services.Infrastructure;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -15,49 +12,19 @@ namespace App
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-
-            //Database
-            services.AddDbContextPool<FormazioneDbContext>(optionsBuilder => {
-                string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
-                optionsBuilder.UseSqlServer(connectionString);
-            });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsEnvironment("Development"))
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                lifetime.ApplicationStarted.Register(() =>
-                {
-                    string filePath = Path.Combine(env.ContentRootPath, "bin/reload.txt");
-                    File.WriteAllText(filePath, DateTime.Now.ToString());
-                });
             }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-            }
-
-            CultureInfo appCulture = new("it-IT");
-
-            app.UseStaticFiles();
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(appCulture),
-                SupportedCultures = new[] { appCulture }
-            });
 
             app.UseRouting();
 
