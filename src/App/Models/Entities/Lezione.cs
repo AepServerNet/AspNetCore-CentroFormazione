@@ -1,0 +1,79 @@
+using System;
+using SequentialGuid;
+
+namespace App.Models.Entities
+{
+    public partial class Lezione
+    {
+        public Lezione(string CodiceCorso, string CodiceDocente, string CodiceAula, string DataInizioLezione, string DataFineLezione)
+        {
+            IdLezione = SequentialGuidGenerator.Instance.NewGuid().ToString();
+            ChangeCodiceCorso(CodiceCorso);
+            ChangeCodiceDocente(CodiceDocente);
+            ChangeCodiceAula(CodiceAula);
+            ChangeDataInizioLezione(DataInizioLezione);
+            ChangeDataFineLezione(DataFineLezione);
+            Note = "";
+        }
+
+        public int Id { get; set; }
+        public string IdLezione { get; set; }
+        public string CodiceCorso { get; set; }
+        public string CodiceDocente { get; set; }
+        public string CodiceAula { get; set; }
+        public string DataInizioLezione { get; set; }
+        public string DataFineLezione { get; set; }
+        public string Note { get; set; }
+        public virtual Corso Corso { get; set; }
+
+        public void ChangeCodiceCorso(string newCodiceCorso)
+        {
+            if (string.IsNullOrWhiteSpace(newCodiceCorso))
+            {
+                throw new ArgumentException("La lezione deve avere un codice corso");
+            }
+
+            CodiceCorso = newCodiceCorso;
+        }
+
+        public void ChangeCodiceDocente(string newCodiceDocente)
+        {
+            if (string.IsNullOrWhiteSpace(newCodiceDocente))
+            {
+                throw new ArgumentException("La lezione deve avere un codice docente");
+            }
+
+            CodiceDocente = newCodiceDocente;
+        }
+
+        public void ChangeCodiceAula(string newCodiceAula)
+        {
+            if (string.IsNullOrWhiteSpace(newCodiceAula))
+            {
+                throw new ArgumentException("La lezione deve avere un codice aula");
+            }
+
+            CodiceAula = newCodiceAula;
+        }
+
+        public void ChangeDataInizioLezione(string newDataInizioLezione)
+        {
+            if (string.IsNullOrWhiteSpace(newDataInizioLezione))
+            {
+                throw new ArgumentException("La lezione deve avere una data di inizio");
+            }
+
+            DataInizioLezione = newDataInizioLezione;
+        }
+
+        public void ChangeDataFineLezione(string newDataFineLezione)
+        {
+            if (string.IsNullOrWhiteSpace(newDataFineLezione))
+            {
+                throw new ArgumentException("La lezione deve avere una data di fine");
+            }
+
+            DataFineLezione = newDataFineLezione;
+        }
+    }
+}
