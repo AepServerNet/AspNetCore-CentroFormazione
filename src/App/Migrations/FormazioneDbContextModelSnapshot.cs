@@ -70,14 +70,14 @@ namespace App.Migrations
                     b.Property<string>("CodiceDocente")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CorsoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("DataFineLezione")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DataInizioLezione")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCorso")
-                        .HasColumnType("int");
 
                     b.Property<string>("IdLezione")
                         .HasColumnType("nvarchar(max)");
@@ -87,7 +87,7 @@ namespace App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCorso");
+                    b.HasIndex("CorsoId");
 
                     b.ToTable("Lezioni");
                 });
@@ -96,7 +96,7 @@ namespace App.Migrations
                 {
                     b.HasOne("App.Models.Entities.Corso", "Corso")
                         .WithMany("Lezioni")
-                        .HasForeignKey("IdCorso")
+                        .HasForeignKey("CorsoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
