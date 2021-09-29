@@ -30,7 +30,9 @@ namespace App.Migrations
                 name: "Lezioni",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdCorso = table.Column<int>(type: "int", nullable: false),
                     IdLezione = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodiceCorso = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodiceDocente = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -43,12 +45,17 @@ namespace App.Migrations
                 {
                     table.PrimaryKey("PK_Lezioni", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Lezioni_Corsi_Id",
-                        column: x => x.Id,
+                        name: "FK_Lezioni_Corsi_IdCorso",
+                        column: x => x.IdCorso,
                         principalTable: "Corsi",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lezioni_IdCorso",
+                table: "Lezioni",
+                column: "IdCorso");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

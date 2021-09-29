@@ -57,7 +57,9 @@ namespace App.Migrations
             modelBuilder.Entity("App.Models.Entities.Lezione", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CodiceAula")
                         .HasColumnType("nvarchar(max)");
@@ -74,6 +76,9 @@ namespace App.Migrations
                     b.Property<string>("DataInizioLezione")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IdCorso")
+                        .HasColumnType("int");
+
                     b.Property<string>("IdLezione")
                         .HasColumnType("nvarchar(max)");
 
@@ -82,6 +87,8 @@ namespace App.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdCorso");
+
                     b.ToTable("Lezioni");
                 });
 
@@ -89,7 +96,7 @@ namespace App.Migrations
                 {
                     b.HasOne("App.Models.Entities.Corso", "Corso")
                         .WithMany("Lezioni")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("IdCorso")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

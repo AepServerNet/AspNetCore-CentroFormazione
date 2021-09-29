@@ -22,8 +22,8 @@ namespace App.Models.Services.Infrastructure
                 entity.HasKey(corso => corso.Id);
 
                 entity.HasMany(corso => corso.Lezioni)
-                .WithOne(lezione => lezione.Corso)
-                .HasForeignKey(Lezione => Lezione.Id);
+                    .WithOne(lezione => lezione.Corso)
+                    .HasForeignKey(lezione => lezione.IdCorso);
             });
 
             modelBuilder.Entity<Lezione>(entity => 

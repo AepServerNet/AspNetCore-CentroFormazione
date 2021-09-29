@@ -5,8 +5,9 @@ namespace App.Models.Entities
 {
     public partial class Lezione
     {
-        public Lezione(string CodiceCorso, string CodiceDocente, string CodiceAula, string DataInizioLezione, string DataFineLezione)
+        public Lezione(int idCorso, string CodiceCorso, string CodiceDocente, string CodiceAula, string DataInizioLezione, string DataFineLezione)
         {
+            IdCorso = idCorso;
             IdLezione = SequentialGuidGenerator.Instance.NewGuid().ToString();
             ChangeCodiceCorso(CodiceCorso);
             ChangeCodiceDocente(CodiceDocente);
@@ -17,6 +18,7 @@ namespace App.Models.Entities
         }
 
         public int Id { get; set; }
+        public int IdCorso { get; set; }
         public string IdLezione { get; set; }
         public string CodiceCorso { get; set; }
         public string CodiceDocente { get; set; }
