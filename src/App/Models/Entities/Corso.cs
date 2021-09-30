@@ -41,6 +41,16 @@ namespace App.Models.Entities
             CodiceDipartimento = newCodiceDipartimento;
         }
 
+        public void ChangeEdizioneCorso(string newEdizioneCorso)
+        {
+            if (string.IsNullOrWhiteSpace(newEdizioneCorso))
+            {
+                throw new ArgumentException("Il corso deve avere l'indicazione dell'edizione");
+            }
+
+            EdizioneCorso = newEdizioneCorso;
+        }
+
         public void ChangeNomeCorso(string newNomeCorso)
         {
             if (string.IsNullOrWhiteSpace(newNomeCorso))
@@ -79,6 +89,16 @@ namespace App.Models.Entities
             }
 
             OreCorso = newOreCorso;
+        }
+
+        public void ChangeNote(string newNote)
+        {
+            if (string.IsNullOrWhiteSpace(newNote))
+            {
+                throw new ArgumentException("Il corso deve avere le note");
+            }
+
+            Note = newNote;
         }
     }
 }
