@@ -11,6 +11,8 @@ namespace App.Models.Services.Infrastructure
 
         public virtual DbSet<Corso> Corsi { get; set; }
         public virtual DbSet<Lezione> Lezioni { get; set; }
+        public virtual DbSet<Edificio> Edifici { get; set; }
+        public virtual DbSet<Docente> Docenti { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +32,27 @@ namespace App.Models.Services.Infrastructure
             {
                 entity.ToTable("Lezioni");
                 entity.HasKey(lezione => lezione.Id);
+            });
+
+            modelBuilder.Entity<Docente>(entity =>
+            {
+                entity.ToTable("Docenti");
+                entity.HasKey(docente => docente.Id);
+
+                entity.OwnsOne(docente => docente.CostoOrario, builder => {
+                    builder.Property(money => money.Currency)
+                           .HasConversion<string>()
+                           .HasColumnName("CostoOrario_Currency");
+                    builder.Property(money => money.Amount)
+                           .HasColumnName("CostoOrario_Amount")
+                           .HasConversion<float>();
+                });
+            });
+
+            modelBuilder.Entity<Edificio>(entity => 
+            {
+                entity.ToTable("Edifici");
+                entity.HasKey(edificio => edificio.Id);
             });
         }
     }
