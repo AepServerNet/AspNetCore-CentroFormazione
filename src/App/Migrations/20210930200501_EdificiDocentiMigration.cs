@@ -20,7 +20,7 @@ namespace App.Migrations
                     Residenza = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodiceCorso = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CodiceDipartimento = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CostoOrario_Amount = table.Column<float>(type: "real", nullable: true),
+                    CostoOrario_Amount = table.Column<float>(type: "float", nullable: true),
                     CostoOrario_Currency = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

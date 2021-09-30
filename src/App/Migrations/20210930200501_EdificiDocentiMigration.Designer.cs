@@ -179,7 +179,7 @@ namespace App.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<float>("Amount")
-                                .HasColumnType("real")
+                                .HasColumnType("float")
                                 .HasColumnName("CostoOrario_Amount");
 
                             b1.Property<string>("Currency")
