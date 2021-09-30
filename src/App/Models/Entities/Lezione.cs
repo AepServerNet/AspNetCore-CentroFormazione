@@ -77,5 +77,15 @@ namespace App.Models.Entities
 
             DataFineLezione = newDataFineLezione;
         }
+
+        public void ChangeNote(string newNote)
+        {
+            if (string.IsNullOrWhiteSpace(newNote))
+            {
+                throw new ArgumentException("La lezione deve avere le note");
+            }
+
+            Note = newNote;
+        }
     }
 }
