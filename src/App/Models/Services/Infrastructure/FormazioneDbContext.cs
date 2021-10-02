@@ -41,11 +41,11 @@ namespace App.Models.Services.Infrastructure
 
                 entity.OwnsOne(docente => docente.CostoOrario, builder => {
                     builder.Property(money => money.Currency)
-                           .HasConversion<string>()
-                           .HasColumnName("CostoOrario_Currency");
+                        .HasConversion<string>()
+                        .HasColumnName("CostoOrario_Currency");
                     builder.Property(money => money.Amount)
-                           .HasColumnName("CostoOrario_Amount")
-                           .HasConversion<float>();
+                        .HasColumnName("CostoOrario_Amount")
+                        .HasConversion<float>();
                 });
             });
 
