@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using App.Models.Options;
+using App.Models.Services.Application;
 using App.Models.Services.Application.Docenti;
 using App.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -34,8 +35,9 @@ namespace App
                 optionsBuilder.UseSqlServer(connectionString);
             });
 
+            services.AddSingleton<IErrorViewSelectorService, ErrorViewSelectorService>();
             services.AddTransient<IDocentiService, EfCoreDocentiService>();
-
+            
             //Options
             services.Configure<DocenteOptions>(Configuration.GetSection("Docente"));
         }
@@ -69,6 +71,7 @@ namespace App
             app.UseRouting();
             app.UseEndpoints(routeBuilder => {
                 routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routeBuilder.MapFallbackToController("{*path}", "Index", "Error");
             });
         }
     }

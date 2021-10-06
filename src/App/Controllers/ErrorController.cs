@@ -1,19 +1,21 @@
-using Microsoft.AspNetCore.Diagnostics;
+using App.Models.Services.Infrastructure;
+using App.Models.ValueTypes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers
 {
     public class ErrorController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index([FromServices] IErrorViewSelectorService errorViewSelectorService)
         {
-            var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            switch(feature.Error)
-            {
-                default:
-                    ViewData["Title"] = "Errore";
-                    return View();
-            }
+            ErrorViewData errorViewData = errorViewSelectorService.GetErrorViewData(HttpContext);
+
+            ViewData["Title"] = "Errore";
+            ViewData["TitleMessage"] = errorViewData.Title;
+            ViewData["Message"] = errorViewData.Message;
+
+            Response.StatusCode = (int) errorViewData.StatusCode;
+            return View(errorViewData.ViewName);
         }
     }
 }
