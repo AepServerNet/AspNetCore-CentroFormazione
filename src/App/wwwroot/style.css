@@ -1,0 +1,90 @@
+html, body {
+    min-height: 100vh;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+body>.container {
+    flex: 1;
+}
+body>footer {
+    background-color: #e3f2fd;
+}
+footer {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 1px solid #ccc;
+    padding-bottom: 2em;
+    text-align: center;
+    color: gray;
+}
+.jumbotron {
+    background-image: url('/images/hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jumbotron h1 {
+    font-size: 3.5rem;
+}
+h1 {
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+    font-weight: 200;
+}
+.navbar {  
+    background-color: #e3f2fd;
+}
+.spaces-top {
+    margin-top: 25px;
+}
+.card-height {
+    height: 250px;
+}
+.testo-tabella-dash {
+    font-size: 12px;
+}
+.titolo-tabella-dash {
+    font-size: 12px;
+    font-weight: bold;
+}
+.titolo-tabella-bt {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007BFF;
+}
+.testo-tabella-bt {
+    font-size: 14px;
+}
+.testo-bt {
+    font-size: 14px;
+}
+.field-validation-error {
+    color:red;
+}
+.validation-summary-errors ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1em;
+}
+.validation-summary-errors li {
+    color: darkred;
+    border-left: 3px solid red;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: rgba(255, 0, 0, 0.05);
+    margin-bottom: 2px;
+}
+.labtitolo-tabella-bt {
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+}
+.labtesto-tabella-bt {
+    font-size: 14px;
+}
+.dropdown-menu a:hover {
+    background-color: #E3F2FD;
+}
