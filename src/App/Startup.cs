@@ -1,6 +1,8 @@
 using System;
 using System.Globalization;
 using System.IO;
+using App.Models.Options;
+using App.Models.Services.Application.Docenti;
 using App.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +33,11 @@ namespace App
                 string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
                 optionsBuilder.UseSqlServer(connectionString);
             });
+
+            services.AddTransient<IDocentiService, EfCoreDocentiService>();
+
+            //Options
+            services.Configure<DocenteOptions>(Configuration.GetSection("Docente"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
@@ -60,13 +67,8 @@ namespace App
             });
 
             app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+            app.UseEndpoints(routeBuilder => {
+                routeBuilder.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
