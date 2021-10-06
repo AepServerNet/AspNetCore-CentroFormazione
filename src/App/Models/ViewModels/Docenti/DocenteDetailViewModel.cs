@@ -1,4 +1,3 @@
-using App.Models.Entities;
 using App.Models.ValueTypes;
 
 namespace App.Models.ViewModels.Docenti
@@ -15,21 +14,5 @@ namespace App.Models.ViewModels.Docenti
         public string CodiceCorso { get; set; }
         public string CodiceDipartimento { get; set; }
         public Money CostoOrario { get; set; }
-
-        public static DocenteDetailViewModel FromEntity(Docente docente)
-        {
-            return new DocenteDetailViewModel {
-                Id = docente.Id,
-                IdDocente = docente.IdDocente,
-                NominativoDocente  = docente.NominativoDocente,
-                MateriaInsegnata = docente.MateriaInsegnata,
-                Telefono = docente.Telefono,
-                Email = docente.Email,
-                Residenza = docente.Residenza,
-                CodiceCorso = docente.CodiceCorso,
-                CodiceDipartimento = docente.CodiceDipartimento,
-                CostoOrario = docente.CostoOrario
-            };
-        }
     }
 }

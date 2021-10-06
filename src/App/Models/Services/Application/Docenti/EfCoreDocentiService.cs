@@ -4,7 +4,9 @@ using App.Models.Entities;
 using App.Models.InputModels.Docenti;
 using App.Models.Services.Infrastructure;
 using App.Models.ViewModels.Docenti;
+using App.Models.Extensions;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Models.Services.Application.Docenti
 {
@@ -36,7 +38,7 @@ namespace App.Models.Services.Application.Docenti
                 throw new Exception();
             }
 
-            return DocenteDetailViewModel.FromEntity(docente);
+            return docente.ToDocenteDetailViewModel();
         }
     }
 }
