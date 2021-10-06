@@ -1,0 +1,99 @@
+@model DocenteCreateInputModel
+<form method="POST">
+    <div class="card">
+        <div class="card-header">Creazione scheda docente</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-12" asp-validation-summary="All"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="NominativoDocente"></label><br>
+                                    <input type="text" asp-for="NominativoDocente" class="form-control">
+                                    <span asp-validation-for="NominativoDocente"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="MateriaInsegnata"></label><br>
+                                    <input type="text" asp-for="MateriaInsegnata" class="form-control">
+                                    <span asp-validation-for="MateriaInsegnata"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Telefono"></label><br>
+                                    <input type="text" asp-for="Telefono" class="form-control">
+                                    <span asp-validation-for="Telefono"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Email"></label><br>
+                                    <input type="text" asp-for="Email" class="form-control">
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Residenza"></label><br>
+                                    <input type="text" asp-for="Residenza" class="form-control">
+                                    <span asp-validation-for="Residenza"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    TODO: Codice Corso
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    TODO: Codice Dipartimento
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CostoOrario"></label><br>
+                                    <div class="input-group">
+                                        <select asp-items="@Html.GetEnumSelectList<Currency>()" asp-for="CostoOrario.Currency" class="form-control"></select>
+                                        <input type="number" step="any" asp-for="CostoOrario.Amount" class="form-control form-control-block">
+                                        <span asp-validation-for="CostoOrario"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-3">
+                                <a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i></a>&nbsp;
+                                <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_Validation"></partial>
+}
