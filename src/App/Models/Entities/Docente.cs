@@ -12,11 +12,11 @@ namespace App.Models.Entities
             IdDocente = SequentialGuidGenerator.Instance.NewGuid().ToString();
             ChangeNominativoDocente(NominativoDocente);
             ChangeMateriaInsegnata(MateriaInsegnata);
-            Telefono = "";
-            Email = "";
-            Residenza = "";
-            CodiceCorso = "";
-            CodiceDipartimento = "";
+            Telefono = "Dato mancante";
+            Email = "Dato mancante";
+            Residenza = "Dato mancante";
+            CodiceCorso = "Dato mancante";
+            CodiceDipartimento = "Dato mancante";
             CostoOrario = new Money(Currency.EUR, 0);
         }
 
