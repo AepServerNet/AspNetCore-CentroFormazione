@@ -21,28 +21,32 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12"><br></div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-3 titolo-tabella-bt"><docente-order-link order-by="NominativoDocente" Input="@Model.Input">Nominativo Docente</docente-order-link></div>
-                                    <div class="col-md-3 titolo-tabella-bt">Materia insegnata</div>
+                                    <div class="col-md-2 titolo-tabella-bt">Materia insegnata</div>
                                     <div class="col-md-2 titolo-tabella-bt">Telefono</div>
                                     <div class="col-md-3 titolo-tabella-bt">Indirizzo Email</div>
-                                    <div class="col-md-1"></div>
+                                    <div class="col-md-2"></div>
                                 </div>
                                 @foreach (var docente in Model.Docente.Results)
                                 {
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-3 testo-tabella-bt">@docente.NominativoDocente</div>
-                                        <div class="col-md-3 testo-tabella-bt">@docente.MateriaInsegnata</div>
+                                        <div class="col-md-2 testo-tabella-bt">@docente.MateriaInsegnata</div>
                                         <div class="col-md-2 testo-tabella-bt">@docente.Telefono</div>
                                         <div class="col-md-3 testo-tabella-bt">@docente.Email</div>
-                                        <div class="col-md-1 d-flex align-items-center">
-                                        <a class="btn btn-outline-primary" asp-controller="Docenti" asp-action="Detail" asp-route-id="@docente.IdDocente"><i class="fas fa-info"></i> Dettaglio</a>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <a class="btn btn-outline-primary" asp-controller="Docenti" asp-action="Detail" asp-route-IdDocente="@docente.IdDocente"><i class="fas fa-info"></i> Dettaglio</a>
                                         </div>
                                     </div>   
                                 }
-                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12"><br></div>
+                                </div>
                                 <vc:pagination-bar model="@Model"></vc:pagination-bar>
                             </div>
                         </div>
