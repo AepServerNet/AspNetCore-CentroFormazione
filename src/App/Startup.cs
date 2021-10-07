@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+using App.Customizations.ModelBinders;
 using App.Models.Options;
 using App.Models.Services.Application;
 using App.Models.Services.Application.Docenti;
@@ -26,7 +27,10 @@ namespace App
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options => 
+            {
+                options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+            });
 
             //Database
             services.AddDbContextPool<FormazioneDbContext>(optionsBuilder => {
