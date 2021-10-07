@@ -4,7 +4,6 @@ namespace App.Models.InputModels.Docenti
 {
     public class DocenteDeleteInputModel
     {
-        [Required]
         public int Id { get; set; }
 
         [Required]

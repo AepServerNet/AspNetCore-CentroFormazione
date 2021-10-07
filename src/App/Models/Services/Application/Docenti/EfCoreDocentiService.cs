@@ -99,7 +99,7 @@ namespace App.Models.Services.Application.Docenti
 
         public async Task<DocenteDetailViewModel> EditDocenteAsync(DocenteEditInputModel inputModel)
         {
-            Docente docente = await dbContext.Docenti.FindAsync(inputModel.Id);
+            Docente docente = await dbContext.Docenti.FindAsync(inputModel.IdDocente);
 
             if (docente == null)
             {
@@ -140,7 +140,14 @@ namespace App.Models.Services.Application.Docenti
 
         public async Task DeleteDocenteAsync(DocenteDeleteInputModel inputModel)
         {
-            Docente docente = await dbContext.Docenti.FindAsync(inputModel.IdDocente);
+            IQueryable<DocenteDetailViewModel> queryLinq = dbContext.Docenti
+                .AsNoTracking()
+                .Where(docente => docente.IdDocente == inputModel.IdDocente)
+                .Select(docente => docente.ToDocenteDetailViewModel());
+
+            DocenteDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
+
+            Docente docente = await dbContext.Docenti.FindAsync(viewModel.Id);
 
             if (docente == null)
             {
