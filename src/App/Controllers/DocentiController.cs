@@ -43,7 +43,7 @@ namespace App.Controllers
             {
                 DocenteDetailViewModel docente = await docenti.CreateDocenteAsync(inputModel);
                 TempData["ConfirmationMessage"] = "Il docente è stato creato con successo";
-                return RedirectToAction(nameof(DocentiController.Edit), "Docenti", new { IdDocente = inputModel.IdDocente });
+                return RedirectToAction(nameof(DocentiController.Edit), "Docenti", new { IdDocente = docente.IdDocente });
             }
 
             return View(inputModel);
