@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using App.Models.Entities;
 using App.Models.InputModels.Docenti;
@@ -10,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using App.Models.ViewModels;
 using System.Linq;
 using System.Collections.Generic;
+using App.Models.Exceptions.Application;
 
 namespace App.Models.Services.Application.Docenti
 {
@@ -70,9 +70,10 @@ namespace App.Models.Services.Application.Docenti
             {
                 await dbContext.SaveChangesAsync();
             }
-            catch
+            catch (DbUpdateException exc)
             {
-                throw new Exception();
+                logger.LogWarning("Errore durante la creazione del docente {NominativoDocente}. Errore: {exc}", NominativoDocente, exc);
+                throw new DatabaseUpdateException(NominativoDocente);
             }
 
             return docente.ToDocenteDetailViewModel();
@@ -89,9 +90,8 @@ namespace App.Models.Services.Application.Docenti
 
             if (viewModel == null)
             {
-                // TODO
-                logger.LogWarning("Docente {id} non trovato", IdDocente);
-                //throw new DocenteNotFoundException(IdDocente);
+                logger.LogWarning("Docente {IdDocente} non trovato", IdDocente);
+                throw new DocenteNotFoundException(IdDocente);
             }
 
             return viewModel;
@@ -103,9 +103,8 @@ namespace App.Models.Services.Application.Docenti
 
             if (docente == null)
             {
-                // TODO
-                logger.LogWarning("Docente {id} non trovato", inputModel.IdDocente);
-                //throw new DocenteNotFoundException(inputModel.IdDocente);
+                logger.LogWarning("Docente {IdDocente} non trovato", inputModel.IdDocente);
+                throw new DocenteNotFoundException(inputModel.IdDocente);
             }
 
             docente.ChangeNominativoDocente(inputModel.NominativoDocente);
@@ -132,9 +131,8 @@ namespace App.Models.Services.Application.Docenti
 
             if (viewModel == null)
             {
-                // TODO
                 logger.LogWarning("Docente {IdDocente} non trovato", IdDocente);
-                //throw new DocenteNotFoundException(IdDocente);
+                throw new DocenteNotFoundException(IdDocente);
             }
 
             return viewModel;
@@ -146,8 +144,8 @@ namespace App.Models.Services.Application.Docenti
 
             if (docente == null)
             {
-                // TODO
-                //throw new DocenteNotFoundException(inputModel.IdDocente);
+                logger.LogWarning("Docente {IdDocente} non trovato", inputModel.IdDocente);
+                throw new DocenteNotFoundException(inputModel.IdDocente);
             }
 
             dbContext.Remove(docente);
