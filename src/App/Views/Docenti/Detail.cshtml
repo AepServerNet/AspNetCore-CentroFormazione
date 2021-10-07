@@ -1,0 +1,104 @@
+@model DocenteDetailViewModel
+<div class="card">
+    <div class="card-header">Dettaglio docente</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card-text">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Nominativo docente</label><br>
+                                <label class="labtesto-tabella-bt">@Model.NominativoDocente</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Materia insegnata</label><br>
+                                <label class="labtesto-tabella-bt">@Model.MateriaInsegnata</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Telefono</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Telefono</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Indirizzo Email</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Residenza</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Residenza</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Costo Orario</label><br>
+                                <label class="labtesto-tabella-bt">@Model.CostoOrario</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="labtitolo-tabella-bt">Codice corso</label><br>
+                            <label class="labtesto-tabella-bt">@Model.CodiceCorso</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labtitolo-tabella-bt">Codice dipartimento</label><br>
+                            <label class="labtesto-tabella-bt">@Model.CodiceDipartimento</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-6"><a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Indice</a>&nbsp;
+                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdDocente="@Model.IdDocente"><i class="fas fa-edit"></i> Modifica</a>
+                            <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#delete-modal"><i class="fas fa-trash-alt"></i> Cancella</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-action="Delete" asp-route-IdDocente="@Model.IdDocente">
+    <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-modal-title">Conferma eliminazione</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Stai per eliminare il docente e non potrai recuperarlo. Confermi l'eliminazione?</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-light" type="button" data-dismiss="modal">Annulla</button>
+                    <button type="submit" class="btn btn-danger">Conferma</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
