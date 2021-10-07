@@ -29,62 +29,6 @@
                             <div class="col-md-12"><br></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="Telefono"></label><br>
-                                    <input type="text" asp-for="Telefono" class="form-control">
-                                    <span asp-validation-for="Telefono"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="Email"></label><br>
-                                    <input type="text" asp-for="Email" class="form-control">
-                                    <span asp-validation-for="Email"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12"><br></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="Residenza"></label><br>
-                                    <input type="text" asp-for="Residenza" class="form-control">
-                                    <span asp-validation-for="Residenza"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="CostoOrario"></label><br>
-                                    <div class="input-group">
-                                        <select asp-items="@Html.GetEnumSelectList<Currency>()" asp-for="CostoOrario.Currency" class="form-control"></select>
-                                        <input type="number" step="any" asp-for="CostoOrario.Amount" class="form-control form-control-block">
-                                        <span asp-validation-for="CostoOrario"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12"><br></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    TODO: Codice Corso
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    TODO: Codice Dipartimento
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12"><br></div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-4"><a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Esci senza salvare</a>&nbsp;
                             <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Salva i dati</button></div>

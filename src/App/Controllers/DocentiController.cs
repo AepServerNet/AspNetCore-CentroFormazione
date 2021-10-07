@@ -1,8 +1,6 @@
 using System.Threading.Tasks;
-using App.Models.Enums;
 using App.Models.InputModels.Docenti;
 using App.Models.Services.Application.Docenti;
-using App.Models.ValueTypes;
 using App.Models.ViewModels;
 using App.Models.ViewModels.Docenti;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +32,6 @@ namespace App.Controllers
         {
             ViewData["Title"] = "Creazione scheda docente";
             DocenteCreateInputModel inputModel = new();
-            inputModel.CostoOrario = new Money(Currency.EUR, 0);
 
             return View(inputModel);
         }
@@ -71,7 +68,7 @@ namespace App.Controllers
         {
             if (ModelState.IsValid)
             {
-                DocenteDetailViewModel socio = await docenti.EditDocenteAsync(inputModel);
+                DocenteDetailViewModel docente = await docenti.EditDocenteAsync(inputModel);
                 TempData["ConfirmationMessage"] = "I dati sono stati aggiornati con successo";
                 return RedirectToAction(nameof(DocentiController.Detail), "Docenti", new { IdDocente = inputModel.IdDocente });
             }

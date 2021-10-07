@@ -6,7 +6,8 @@ namespace App.Models.InputModels.Docenti
     {
         [Required]
         public int Id { get; set; }
+
+        [Required]
         public string IdDocente { get; set; }
-        
     }
 }
