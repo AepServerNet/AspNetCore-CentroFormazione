@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Docenti](
 	[Residenza] [nvarchar](max) NULL,
 	[CodiceCorso] [nvarchar](max) NULL,
 	[CodiceDipartimento] [nvarchar](max) NULL,
-	[CostoOrario_Amount] [float] NULL,
+	[CostoOrario_Amount] [real] NULL,
 	[CostoOrario_Currency] [nvarchar](max) NULL,
  CONSTRAINT [PK_Docenti] PRIMARY KEY CLUSTERED 
 (
