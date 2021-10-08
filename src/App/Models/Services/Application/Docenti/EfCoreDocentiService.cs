@@ -99,7 +99,14 @@ namespace App.Models.Services.Application.Docenti
 
         public async Task<DocenteDetailViewModel> EditDocenteAsync(DocenteEditInputModel inputModel)
         {
-            Docente docente = await dbContext.Docenti.FindAsync(inputModel.IdDocente);
+            IQueryable<DocenteDetailViewModel> queryLinq = dbContext.Docenti
+                .AsNoTracking()
+                .Where(docente => docente.IdDocente == inputModel.IdDocente)
+                .Select(docente => docente.ToDocenteDetailViewModel());
+
+            DocenteDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
+
+            Docente docente = await dbContext.Docenti.FindAsync(viewModel.Id);
 
             if (docente == null)
             {
@@ -112,8 +119,10 @@ namespace App.Models.Services.Application.Docenti
             docente.ChangeTelefono(inputModel.Telefono);
             docente.ChangeEmail(inputModel.Email);
             docente.ChangeResidenza(inputModel.Residenza);
-            docente.ChangeCodiceCorso(inputModel.CodiceCorso);
-            docente.ChangeCodiceDipartimento(inputModel.CodiceDipartimento);
+
+            //TODO: In fase di aggiunta delle dropdownlist per CodiceCorso e CodiceDipartimento, scommentare riga 124 e 125
+            //docente.ChangeCodiceCorso(inputModel.CodiceCorso);
+            //docente.ChangeCodiceDipartimento(inputModel.CodiceDipartimento);
             docente.ChangeCostoOrario(inputModel.CostoOrario);
 
             await dbContext.SaveChangesAsync();
