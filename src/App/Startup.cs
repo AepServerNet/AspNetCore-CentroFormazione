@@ -35,7 +35,10 @@ namespace App
             //Database
             services.AddDbContextPool<FormazioneDbContext>(optionsBuilder => {
                 string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("Default");
-                optionsBuilder.UseSqlServer(connectionString);
+                optionsBuilder.UseSqlServer(connectionString, options => 
+                {
+                    options.EnableRetryOnFailure(3);
+                });
             });
 
             services.AddSingleton<IErrorViewSelectorService, ErrorViewSelectorService>();
