@@ -70,9 +70,9 @@ namespace App.Models.Services.Application.Docenti
             {
                 await dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateException exc)
+            catch (DbUpdateException)
             {
-                logger.LogWarning("Errore durante la creazione del docente {NominativoDocente}. Errore: {exc}", NominativoDocente, exc);
+                logger.LogWarning("Errore durante la creazione del docente {NominativoDocente}.", NominativoDocente);
                 throw new DatabaseUpdateException(NominativoDocente);
             }
 
@@ -99,14 +99,9 @@ namespace App.Models.Services.Application.Docenti
 
         public async Task<DocenteDetailViewModel> EditDocenteAsync(DocenteEditInputModel inputModel)
         {
-            IQueryable<DocenteDetailViewModel> queryLinq = dbContext.Docenti
-                .AsNoTracking()
-                .Where(docente => docente.IdDocente == inputModel.IdDocente)
-                .Select(docente => docente.ToDocenteDetailViewModel());
+            int DocenteId = await GetFindIdDocente(inputModel.IdDocente.ToString());
 
-            DocenteDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
-
-            Docente docente = await dbContext.Docenti.FindAsync(viewModel.Id);
+            Docente docente = await dbContext.Docenti.FindAsync(DocenteId);
 
             if (docente == null)
             {
@@ -125,7 +120,16 @@ namespace App.Models.Services.Application.Docenti
             //docente.ChangeCodiceDipartimento(inputModel.CodiceDipartimento);
             docente.ChangeCostoOrario(inputModel.CostoOrario);
 
-            await dbContext.SaveChangesAsync();
+            try
+            {
+                await dbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                logger.LogWarning("Errore durante l'aggiornamento dei dati del docente {NominativoDocente}.", inputModel.NominativoDocente);
+                throw new DatabaseUpdateException(inputModel.NominativoDocente);
+            }
+
             return docente.ToDocenteDetailViewModel();
         }
 
@@ -149,14 +153,9 @@ namespace App.Models.Services.Application.Docenti
 
         public async Task DeleteDocenteAsync(DocenteDeleteInputModel inputModel)
         {
-            IQueryable<DocenteDetailViewModel> queryLinq = dbContext.Docenti
-                .AsNoTracking()
-                .Where(docente => docente.IdDocente == inputModel.IdDocente)
-                .Select(docente => docente.ToDocenteDetailViewModel());
+            int DocenteId = await GetFindIdDocente(inputModel.IdDocente.ToString());
 
-            DocenteDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
-
-            Docente docente = await dbContext.Docenti.FindAsync(viewModel.Id);
+            Docente docente = await dbContext.Docenti.FindAsync(DocenteId);
 
             if (docente == null)
             {
@@ -164,8 +163,23 @@ namespace App.Models.Services.Application.Docenti
                 throw new DocenteNotFoundException(inputModel.IdDocente);
             }
 
+            //TODO: Eliminare anche i dati collegati al docente che si sta eliminando (esempio: lezioni)
             dbContext.Remove(docente);
             await dbContext.SaveChangesAsync();
+        }
+
+        public async Task<int> GetFindIdDocente(string IdDocente)
+        {
+            IQueryable<DocenteDetailViewModel> queryLinq = dbContext.Docenti
+                .AsNoTracking()
+                .Where(docente => docente.IdDocente == IdDocente)
+                .Select(docente => docente.ToDocenteDetailViewModel());
+
+            DocenteDetailViewModel viewModel = await queryLinq.FirstOrDefaultAsync();
+            
+            int IDDocente = viewModel.Id;
+
+            return IDDocente;
         }
     }
 }
