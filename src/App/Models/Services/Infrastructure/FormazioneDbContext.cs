@@ -47,6 +47,10 @@ namespace App.Models.Services.Infrastructure
                         .HasColumnName("CostoOrario_Amount")
                         .HasConversion<float>();
                 });
+
+                entity.HasMany(docente => docente.Lezioni)
+                    .WithOne(lezione => lezione.Docente)
+                    .HasForeignKey(lezione => lezione.DocenteId);
             });
 
             modelBuilder.Entity<Edificio>(entity => 

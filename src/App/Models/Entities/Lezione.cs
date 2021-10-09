@@ -19,6 +19,7 @@ namespace App.Models.Entities
 
         public int Id { get; set; }
         public int CorsoId { get; set; }
+        public int DocenteId { get; set; }
         public string IdLezione { get; set; }
         public string CodiceCorso { get; set; }
         public string CodiceDocente { get; set; }
@@ -27,6 +28,7 @@ namespace App.Models.Entities
         public string DataFineLezione { get; set; }
         public string Note { get; set; }
         public virtual Corso Corso { get; set; }
+        public virtual Docente Docente { get; set; }
 
         public void ChangeCodiceCorso(string newCodiceCorso)
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using App.Models.Enums;
 using App.Models.ValueTypes;
 using SequentialGuid;
@@ -30,6 +31,7 @@ namespace App.Models.Entities
         public string CodiceCorso { get; set; }
         public string CodiceDipartimento { get; set; }
         public Money CostoOrario { get; set; }
+        public virtual ICollection<Lezione> Lezioni { get; set; }
 
         public void ChangeNominativoDocente(string newNominativoDocente)
         {
