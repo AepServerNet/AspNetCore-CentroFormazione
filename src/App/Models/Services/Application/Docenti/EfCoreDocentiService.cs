@@ -163,7 +163,6 @@ namespace App.Models.Services.Application.Docenti
                 throw new DocenteNotFoundException(inputModel.IdDocente);
             }
 
-            //TODO: Eliminare anche i dati collegati al docente che si sta eliminando (esempio: lezioni)
             dbContext.Remove(docente);
             await dbContext.SaveChangesAsync();
         }
