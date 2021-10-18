@@ -5,10 +5,11 @@ namespace App.Models.Entities
 {
     public partial class Lezione
     {
-        public Lezione(int corsoId, string CodiceCorso, string CodiceDocente, string CodiceAula, string DataInizioLezione, string DataFineLezione)
+        public Lezione(int corsoId, string NomeLezione, string CodiceCorso, string CodiceDocente, string CodiceAula, string DataInizioLezione, string DataFineLezione)
         {
             CorsoId = corsoId;
             IdLezione = SequentialGuidGenerator.Instance.NewGuid().ToString();
+            ChangeNomeLezione(NomeLezione);
             ChangeCodiceCorso(CodiceCorso);
             ChangeCodiceDocente(CodiceDocente);
             ChangeCodiceAula(CodiceAula);
@@ -21,6 +22,7 @@ namespace App.Models.Entities
         public int CorsoId { get; set; }
         public int DocenteId { get; set; }
         public string IdLezione { get; set; }
+        public string NomeLezione { get; set; }
         public string CodiceCorso { get; set; }
         public string CodiceDocente { get; set; }
         public string CodiceAula { get; set; }
@@ -29,6 +31,16 @@ namespace App.Models.Entities
         public string Note { get; set; }
         public virtual Corso Corso { get; set; }
         public virtual Docente Docente { get; set; }
+
+        public void ChangeNomeLezione(string newNomeLezione)
+        {
+            if (string.IsNullOrWhiteSpace(newNomeLezione))
+            {
+                throw new ArgumentException("La lezione deve avere una descrizione");
+            }
+
+            NomeLezione = newNomeLezione;
+        }
 
         public void ChangeCodiceCorso(string newCodiceCorso)
         {
