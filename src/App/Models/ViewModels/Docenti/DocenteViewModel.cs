@@ -11,8 +11,6 @@ namespace App.Models.ViewModels.Docenti
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string Residenza { get; set; }
-        public string CodiceCorso { get; set; }
-        public string CodiceDipartimento { get; set; }
         public Money CostoOrario { get; set; }
     }
 }

@@ -16,8 +16,6 @@ namespace App.Models.Entities
             Telefono = "Dato mancante";
             Email = "Dato mancante";
             Residenza = "Dato mancante";
-            CodiceCorso = "Dato mancante";
-            CodiceDipartimento = "Dato mancante";
             CostoOrario = new Money(Currency.EUR, 0);
         }
 
@@ -28,8 +26,6 @@ namespace App.Models.Entities
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string Residenza { get; set; }
-        public string CodiceCorso { get; set; }
-        public string CodiceDipartimento { get; set; }
         public Money CostoOrario { get; set; }
         public virtual ICollection<Lezione> Lezioni { get; set; }
 
@@ -81,26 +77,6 @@ namespace App.Models.Entities
             }
 
             Residenza = newResidenza;
-        }
-
-        public void ChangeCodiceCorso(string newCodiceCorso)
-        {
-            if (string.IsNullOrEmpty(newCodiceCorso))
-            {
-                throw new ArgumentException("Il docente deve aver assegnato ad un corso");
-            }
-            
-            CodiceCorso = newCodiceCorso;
-        }
-
-        public void ChangeCodiceDipartimento(string newCodiceDipartimento)
-        {
-            if (string.IsNullOrEmpty(newCodiceDipartimento))
-            {
-                throw new ArgumentException("Il docente aver assegnato una dipartimento");
-            }
-            
-            CodiceDipartimento = newCodiceDipartimento;
         }
 
         public void ChangeCostoOrario(Money newCostoOrario)

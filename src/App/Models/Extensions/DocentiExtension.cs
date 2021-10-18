@@ -17,8 +17,6 @@ namespace App.Models.Extensions
                 Telefono = docente.Telefono,
                 Email = docente.Email,
                 Residenza = docente.Residenza,
-                CodiceCorso = docente.CodiceCorso,
-                CodiceDipartimento = docente.CodiceDipartimento,
                 CostoOrario = docente.CostoOrario
             };
         }
@@ -34,8 +32,6 @@ namespace App.Models.Extensions
                 Telefono = docente.Telefono,
                 Email = docente.Email,
                 Residenza = docente.Residenza,
-                CodiceCorso = docente.CodiceCorso,
-                CodiceDipartimento = docente.CodiceDipartimento,
                 CostoOrario = docente.CostoOrario
             };
         }
@@ -51,8 +47,6 @@ namespace App.Models.Extensions
                 Telefono = docente.Telefono,
                 Email = docente.Email,
                 Residenza = docente.Residenza,
-                CodiceCorso = docente.CodiceCorso,
-                CodiceDipartimento = docente.CodiceDipartimento,
                 CostoOrario = docente.CostoOrario
             };
         }

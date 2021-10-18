@@ -27,12 +27,6 @@ namespace App.Models.InputModels.Docenti
         [Display(Name = "Residenza")]
         public string Residenza { get; set; }
 
-        [Display(Name = "Codice Corso")]
-        public string CodiceCorso { get; set; }
-
-        [Display(Name = "Codice Dipartimento")]
-        public string CodiceDipartimento { get; set; }
-
         [Display(Name = "Costo orario")]
         public Money CostoOrario { get; set; }
     }
