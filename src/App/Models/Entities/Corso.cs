@@ -10,12 +10,12 @@ namespace App.Models.Entities
         {
             IdCorso = SequentialGuidGenerator.Instance.NewGuid().ToString();
             ChangeCodiceDipartimento(CodiceDipartimento);
-            EdizioneCorso = "";
+            EdizioneCorso = "Dato mancante";
             ChangeNomeCorso(NomeCorso);
             ChangeDataInizioCorso(DataInizioCorso);
             ChangeDataFineCorso(DataFineCorso);
             ChangeOreCorso(OreCorso);
-            Note = "";
+            Note = "Dato mancante";
 
             Lezioni = new HashSet<Lezione>();
         }

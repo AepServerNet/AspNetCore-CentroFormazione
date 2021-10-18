@@ -10,12 +10,12 @@ namespace App.Models.Entities
             IdEdificio = SequentialGuidGenerator.Instance.NewGuid().ToString();
             ChangeCodiceDipartimento(CodiceDipartimento);
             ChangeAula(Aula);
-            Indirizzo = "";
-            Piano = "";
-            Mq = "";
+            Indirizzo = "Dato mancante";
+            Piano = "Dato mancante";
+            Mq = "Dato mancante";
             ChangeLaboratorio(Laboratorio);
             ChangePosti(Posti);
-            Note = "";
+            Note = "Dato mancante";
         }
 
         public int Id { get; set; }

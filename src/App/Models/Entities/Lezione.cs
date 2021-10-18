@@ -14,7 +14,7 @@ namespace App.Models.Entities
             ChangeCodiceAula(CodiceAula);
             ChangeDataInizioLezione(DataInizioLezione);
             ChangeDataFineLezione(DataFineLezione);
-            Note = "";
+            Note = "Dato mancante";
         }
 
         public int Id { get; set; }
