@@ -1,0 +1,105 @@
+﻿@model EdificioDetailViewModel
+<div class="card">
+    <div class="card-header">Dettaglio edificio</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card-text">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Codice Dipartimento</label><br>
+                                <label class="labtesto-tabella-bt">@Model.CodiceDipartimento</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Aula</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Aula</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Indirizzo</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Indirizzo</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Piano</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Piano</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Metri Quadri</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Mq</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Laboratorio</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Laboratorio</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Posti</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Posti</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labtitolo-tabella-bt">Note</label><br>
+                                <label class="labtesto-tabella-bt">@Model.Note</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><br></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-6"><a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Indice</a>&nbsp;
+                            <a class="btn btn-outline-info" asp-action="Edit" asp-route-IdEdificio="@Model.IdEdificio"><i class="fas fa-edit"></i> Modifica</a>
+                            <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#delete-modal"><i class="fas fa-trash-alt"></i> Cancella</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-action="Delete" asp-route-IdDocente="@Model.IdEdificio">
+    <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="delete-modal-title">Conferma eliminazione</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Stai per eliminare l'edificio e non potrai recuperarlo. Confermi l'eliminazione?</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-light" type="button" data-dismiss="modal">Annulla</button>
+                    <button type="submit" class="btn btn-danger">Conferma</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

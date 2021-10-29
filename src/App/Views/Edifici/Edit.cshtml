@@ -1,0 +1,92 @@
+﻿@model EdificioEditInputModel
+<form method="post">
+    <div class="card">
+        <div class="card-header">Modifica scheda edificio</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-12" asp-validation-summary="All"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <select asp-items="@Html.GetEnumSelectList<Department>()" asp-for="CodiceDipartimento" class="form-control"></select>
+                                    <span asp-validation-for="CodiceDipartimento" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Aula" class="control-label"></label>
+                                    <input asp-for="Aula" class="form-control" />
+                                    <span asp-validation-for="Aula" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Indirizzo" class="control-label"></label>
+                                    <input asp-for="Indirizzo" class="form-control" />
+                                    <span asp-validation-for="Indirizzo" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Piano" class="control-label"></label>
+                                    <input asp-for="Piano" class="form-control" />
+                                    <span asp-validation-for="Piano" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Mq" class="control-label"></label>
+                                    <input asp-for="Mq" class="form-control" />
+                                    <span asp-validation-for="Mq" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Laboratorio" class="control-label"></label>
+                                    <input asp-for="Laboratorio" class="form-control" />
+                                    <span asp-validation-for="Laboratorio" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Posti" class="control-label"></label>
+                                    <input asp-for="Posti" class="form-control" />
+                                    <span asp-validation-for="Posti" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Note" class="control-label"></label>
+                                    <input asp-for="Note" class="form-control" />
+                                    <span asp-validation-for="Note" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12"><br></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-4"><a class="btn btn-outline-secondary" asp-action="Index"><i class="fas fa-reply"></i> Esci senza salvare</a>&nbsp;
+                            <button type="submit" class="btn btn-outline-success"><i class="fas fa-save"></i> Aggiorna i dati</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_Validation"></partial>
+}

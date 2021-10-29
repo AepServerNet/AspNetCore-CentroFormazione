@@ -1,0 +1,58 @@
+﻿@model EdificioListViewModel
+<div class="row">
+    <div class="col-md">
+        <div class="card">
+            <div class="card-header">Gestione Edifici</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card-text">
+                                <div class="row">
+                                    <div class="col-md-2"><a class="btn btn-outline-secondary ml-3" asp-controller="Edifici" asp-action="Create"><i class="fas fa-file-alt"></i> Nuovo</a></div>
+                                    <div class="col-md-7"></div>
+                                    <div class="col-md-3 d-flex align-items-center">
+                                        <form asp-controller="Edifici" asp-action="Index" method="get">
+                                            <div class="input-group">
+                                                <input type="text" name="search" class="form-control" placeholder="Cerca laboratorio..." aria-label="Cerca..." aria-describedby="search-button" value="@Model.Input.Search">
+                                                <div class="input-group-append">
+                                                    <button class="input-group-text" id="search-button"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><br></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 titolo-tabella-bt">Laboratorio</div>
+                                    <div class="col-md-2 titolo-tabella-bt">Aula</div>
+                                    <div class="col-md-2 titolo-tabella-bt">Piano</div>
+                                    <div class="col-md-3 titolo-tabella-bt">Posti</div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                @foreach (var edificio in Model.Edificio.Results)
+                                {
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-3 testo-tabella-bt">@edificio.Laboratorio</div>
+                                        <div class="col-md-2 testo-tabella-bt">@edificio.Aula</div>
+                                        <div class="col-md-2 testo-tabella-bt">@edificio.Piano</div>
+                                        <div class="col-md-3 testo-tabella-bt">@edificio.Posti</div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <a class="btn btn-outline-primary" asp-controller="Edifici" asp-action="Detail" asp-route-IdDocente="@edificio.IdEdificio"><i class="fas fa-info"></i> Dettaglio</a>
+                                        </div>
+                                    </div>   
+                                }
+                                <div class="row">
+                                    <div class="col-md-12"><br></div>
+                                </div>
+                                <vc:pagination-bar model="@Model"></vc:pagination-bar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
