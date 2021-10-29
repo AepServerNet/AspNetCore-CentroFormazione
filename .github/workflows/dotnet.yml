@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore ./src/App/App.csproj
 
       - name: Build
-        run: dotnet build --no-restore ./src/FacileBudget/App.csproj
+        run: dotnet build --no-restore ./src/App/App.csproj
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal ./src/FacileBudget/App.csproj
+        run: dotnet test --no-build --verbosity normal ./src/App/App.csproj
