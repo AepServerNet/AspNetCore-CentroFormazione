@@ -5,6 +5,7 @@ using App.Customizations.ModelBinders;
 using App.Models.Options;
 using App.Models.Services.Application;
 using App.Models.Services.Application.Docenti;
+using App.Models.Services.Application.Edifici;
 using App.Models.Services.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +44,7 @@ namespace App
 
             services.AddSingleton<IErrorViewSelectorService, ErrorViewSelectorService>();
             services.AddTransient<IDocentiService, EfCoreDocentiService>();
+            services.AddTransient<IEdificiService, EfCoreEdificiService>();
             
             //Options
             services.Configure<DocenteOptions>(Configuration.GetSection("Docente"));
