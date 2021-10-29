@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using App.Models.ValueTypes;
 
 namespace App.Models.InputModels.Docenti
 {
