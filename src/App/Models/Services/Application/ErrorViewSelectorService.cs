@@ -27,6 +27,11 @@ namespace App.Models.Services.Application
                     statusCode: HttpStatusCode.NotFound,
                     viewName: "NotFound"),
 
+                EdificioNotFoundException exc => new ErrorViewData(
+                    message: $"Laboratorio {exc.IdEdificio} non trovato",
+                    statusCode: HttpStatusCode.NotFound,
+                    viewName: "NotFound"),
+
                 DatabaseUpdateException exc => new ErrorViewData(
                     message: $"Errore durante la creazione del docente {exc.NominativoDocente}",
                     statusCode: HttpStatusCode.InternalServerError,
