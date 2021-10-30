@@ -30,8 +30,8 @@ namespace App.Models.Services.Application.Edifici
 
             baseQuery = (model.OrderBy, model.Ascending) switch
             {
-                // ("Laboratorio", true) => baseQuery.OrderBy(edificio => edificio.Laboratorio),
-                // ("Laboratorio", false) => baseQuery.OrderByDescending(edificio => edificio.Laboratorio),
+                ("Laboratorio", true) => baseQuery.OrderBy(edificio => edificio.Laboratorio),
+                ("Laboratorio", false) => baseQuery.OrderByDescending(edificio => edificio.Laboratorio),
                 ("Id", true) => baseQuery.OrderBy(edificio => edificio.Id),
                 ("Id", false) => baseQuery.OrderByDescending(edificio => edificio.Id),
                 _ => baseQuery
