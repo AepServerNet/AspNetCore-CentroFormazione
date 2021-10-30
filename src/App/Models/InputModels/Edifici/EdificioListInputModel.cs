@@ -25,12 +25,12 @@ namespace App.Models.InputModels.Edifici
 
             Offset = (Page - 1) * Limit;
         }
-
+        
         public string Search { get; }
         public int Page { get; }
         public string OrderBy { get; }
         public bool Ascending { get; }
-
+        
         public int Limit { get; }
         public int Offset { get; }
     }

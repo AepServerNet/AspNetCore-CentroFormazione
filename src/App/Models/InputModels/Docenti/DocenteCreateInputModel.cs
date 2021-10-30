@@ -6,12 +6,14 @@ namespace App.Models.InputModels.Docenti
     {
         public string IdDocente { get; set; }
         
-        [Required(ErrorMessage = "Il nominativo docente è obbligatorio"),
-        Display(Name = "Nominativo Docente")]
+        // [Required(ErrorMessage = "Il nominativo docente è obbligatorio"),
+        // Display(Name = "Nominativo Docente")]
+        [Display(Name = "Nominativo Docente")]
         public string NominativoDocente { get; set; }
 
-        [Required(ErrorMessage = "La materia insegnata è obbligatoria"),
-        Display(Name = "Materia Insegnata")]
+        // [Required(ErrorMessage = "La materia insegnata è obbligatoria"),
+        // Display(Name = "Materia Insegnata")]
+        [Display(Name = "Materia Insegnata")]
         public string MateriaInsegnata { get; set; }
     }
 }

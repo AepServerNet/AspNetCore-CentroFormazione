@@ -5,17 +5,18 @@ namespace App.Models.InputModels.Docenti
 {
     public class DocenteEditInputModel
     {
-        [Required]
         public int Id { get; set; }
 
         public string IdDocente { get; set; }
         
-        [Required(ErrorMessage = "Il nominativo docente è obbligatorio"),
-        Display(Name = "Nominativo Docente")]
+        // [Required(ErrorMessage = "Il nominativo docente è obbligatorio"),
+        // Display(Name = "Nominativo Docente")]
+        [Display(Name = "Nominativo Docente")]
         public string NominativoDocente { get; set; }
 
-        [Required(ErrorMessage = "La materia insegnata pè obbligatoria"),
-        Display(Name = "Materia Insegnata")]
+        // [Required(ErrorMessage = "La materia insegnata pè obbligatoria"),
+        // Display(Name = "Materia Insegnata")]
+        [Display(Name = "Materia Insegnata")]
         public string MateriaInsegnata { get; set; }
 
         [Display(Name = "Telefono")]

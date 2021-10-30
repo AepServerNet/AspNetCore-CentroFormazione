@@ -5,20 +5,24 @@ namespace App.Models.InputModels.Edifici
     {
         public string IdEdificio { get; set; }
 
-        [Required(ErrorMessage = "Il codice è obbligatorio"),
-        Display(Name = "Codice dipartimento")]
+        // [Required(ErrorMessage = "Il codice è obbligatorio"),
+        // Display(Name = "Codice dipartimento")]
+        [Display(Name = "Codice dipartimento")]
         public string CodiceDipartimento { get; set; }
 
-        [Required(ErrorMessage = "Nome aula obbligatorio"),
-        Display(Name ="Aula")]
+        // [Required(ErrorMessage = "Nome aula obbligatorio"),
+        // Display(Name ="Aula")]
+        [Display(Name ="Aula")]
         public string Aula { get; set; }
 
-        [Required(ErrorMessage = "Il laboratorio è obbligatorio"),
-        Display(Name ="Laboratorio")]
+        // [Required(ErrorMessage = "Il laboratorio è obbligatorio"),
+        // Display(Name ="Laboratorio")]
+        [Display(Name ="Laboratorio")]
         public string Laboratorio { get; set; }
         
-        [Required(ErrorMessage = "Il numero dei posti è obbligatorio"),
-        Display(Name ="Posti")]
+        // [Required(ErrorMessage = "Il numero dei posti è obbligatorio"),
+        // Display(Name ="Posti")]
+        [Display(Name ="Posti")]
         public string Posti { get; set; }
     }
 }
