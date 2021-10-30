@@ -1,12 +1,12 @@
 version: '3.7'
 
 services:
-  formazione-cfp:
-    container_name: formazione-cfp
+  app_formazione-cfp:
+    container_name: app_formazione-cfp
     build: .
     restart: always
     volumes:
-      - /storage/netcore_app/formazione-cfp:/app
+      - /gestioneCFP/storage/app:/app
     networks:
       - lan-network
     ports:
