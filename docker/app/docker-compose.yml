@@ -1,18 +1,18 @@
 version: '3.7'
 
 services:
-    web-gestioneCFP:
-         container_name: web-gestioneCFP
-         build: .
-         restart: always
-         networks:
-            - lan-network
-         volumes:
-            - /gestioneCFP/storage/app:/app
-         ports:
-            - 5001:5001
+  formazione-cfp:
+    container_name: formazione-cfp
+    build: .
+    restart: always
+    volumes:
+      - /storage/netcore_app/formazione-cfp:/app
+    networks:
+      - lan-network
+    ports:
+      - 5006:5006
 
 networks:
-   lan-network:
-      external:
-         name: docker-lan
+  lan-network:
+    external:
+      name: docker-lan
