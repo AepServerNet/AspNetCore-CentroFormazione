@@ -7,6 +7,9 @@ using App.Models.Services.Application;
 using App.Models.Services.Application.Docenti;
 using App.Models.Services.Application.Edifici;
 using App.Models.Services.Infrastructure;
+using App.Models.Validators;
+using App.Models.Validators.Docente;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
@@ -31,6 +34,13 @@ namespace App
             services.AddMvc(options => 
             {
                 options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+            })
+            .AddFluentValidation(options => {
+                options.RegisterValidatorsFromAssemblyContaining<DocenteCreateValidator>();
+                options.ConfigureClientsideValidation(clientSide =>
+                {
+                    clientSide.Add(typeof(IRemotePropertyValidator), (context, description, validator) => new RemoteClientValidator(description, validator));
+                });
             });
 
             //Database
@@ -48,6 +58,7 @@ namespace App
             
             //Options
             services.Configure<DocenteOptions>(Configuration.GetSection("Docente"));
+            services.Configure<EdificioOptions>(Configuration.GetSection("Edificio"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
