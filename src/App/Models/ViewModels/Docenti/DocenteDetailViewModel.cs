@@ -1,4 +1,5 @@
 using App.Models.ValueTypes;
+using System.Collections.Generic;
 
 namespace App.Models.ViewModels.Docenti
 {
@@ -12,5 +13,8 @@ namespace App.Models.ViewModels.Docenti
         public string Email { get; set; }
         public string Residenza { get; set; }
         public Money CostoOrario { get; set; }
+
+        //TODO:
+        //public List<LezioneViewModel> Lezioni { get; set; } = new List<LezioneViewModel>();
     }
 }
