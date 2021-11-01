@@ -17,6 +17,8 @@ namespace App.Models.Entities
             Email = "Dato mancante";
             Residenza = "Dato mancante";
             CostoOrario = new Money(Currency.EUR, 0);
+
+            Lezioni = new HashSet<Lezione>();
         }
 
         public int Id { get; set; }
