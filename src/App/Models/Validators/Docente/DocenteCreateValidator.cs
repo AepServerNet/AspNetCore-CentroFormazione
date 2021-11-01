@@ -8,10 +8,10 @@ namespace App.Models.Validators.Docente
         public DocenteCreateValidator()
         {
             RuleFor(m => m.NominativoDocente)
-                .NotEmpty().WithMessage("Il nominativo docente non può essere vuoto");
+                .NotEmpty().WithMessage("Il nominativo docente è un campo obbligatorio");
 
             RuleFor(m => m.MateriaInsegnata)
-                .NotEmpty().WithMessage("La materia insegnata non può essere vuota");
+                .NotEmpty().WithMessage("La materia insegnata è un campo obbligatorio");
         }
     }
 }
