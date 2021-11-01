@@ -1,6 +1,7 @@
 using App.Models.Entities;
 using App.Models.InputModels.Docenti;
 using App.Models.ViewModels.Docenti;
+using System.Linq;
 
 namespace App.Models.Extensions
 {
@@ -32,7 +33,13 @@ namespace App.Models.Extensions
                 Telefono = docente.Telefono,
                 Email = docente.Email,
                 Residenza = docente.Residenza,
-                CostoOrario = docente.CostoOrario
+                CostoOrario = docente.CostoOrario,
+                //TODO:
+                //Lezioni = docente.Lezioni
+                //    .OrderBy(lezione => lezione.Id)
+                //    .ThenBy(lezione => lezione.Id)
+                //    .Select(lezione => lezione.ToLezioneViewModel())
+                //    .ToList()
             };
         }
 
