@@ -8,3 +8,4 @@ The docker-lan network (bridge type) was created with the command:
 
 ## Deploy
 [![dotnet](https://github.com/AngeloDotNet/AspNetCore-CentroFormazione/actions/workflows/dotnet.yml/badge.svg?branch=master)](https://github.com/AngeloDotNet/AspNetCore-CentroFormazione/actions/workflows/dotnet.yml)
+![visitatori](https://countrush-prod.azurewebsites.net/l/badge/?repository=AngeloDotNet.AspNetCore-CentroFormazione)
